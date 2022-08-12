@@ -5,6 +5,10 @@
     "crm-card": {
       "file": "crm-card.js",
       "secrets": []
+    },
+    "generate-meme": {
+      "file": "generate-meme.js",
+      "secrets": []
     }
   }
 }
