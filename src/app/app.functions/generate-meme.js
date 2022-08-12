@@ -7,13 +7,13 @@ exports.main = async (context = {}, sendResponse) => {
     } = context;
 
     try {
-        const memes = await axios.get('https://meme-api.herokuapp.com/gimme/1');
+        const {data} = await axios.get('https://meme-api.herokuapp.com/gimme/1');
         // memes contains a list of 100 memes, get a random one
-        const randomMeme = memes.data.memes[0];
+        const randomMeme = data.memes[0];
         console.log(randomMeme);
         const memeSections = [
             {
-                type: 'text',
+                type: 'tile',
                 body: [
                     {
                         type: 'text',
@@ -23,24 +23,29 @@ exports.main = async (context = {}, sendResponse) => {
                         type: 'text',
                         text: `This was originally posted on the subreddit ${randomMeme.subreddit} at: ${randomMeme.postLink}`,
                     },
-                    // {
-                    //     type: 'image',
-                    //     imageUrl: randomMeme.url,
-                    //     altText: randomMeme.name,
-                    // }
+                    {
+                        type: 'image',
+                        imageUrl: randomMeme.url,
+                        altText: randomMeme.name,
+                    }
                 ]
             },
             {
-                type: 'text',
-                text: 'Press this button to get a Dank Meme!',
-            },
-            {
-                type: 'button',
-                text: 'Meme Me',
-                onClick: {
-                    type: 'SERVERLESS_ACTION_HOOK',
-                    serverlessFunction: 'generate-meme',
-                }
+                type: 'tile',
+                body: [
+                    {
+                        type: 'text',
+                        text: 'Press this button to get a Dank Meme!',
+                    },
+                    {
+                        type: 'button',
+                        text: 'Meme Me',
+                        onClick: {
+                            type: 'SERVERLESS_ACTION_HOOK',
+                            serverlessFunction: 'generate-meme',
+                        }
+                    }
+                ]
             }
         ];
 
