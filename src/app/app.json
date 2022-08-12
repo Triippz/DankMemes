@@ -10,7 +10,7 @@
     "crm": {
       "cards": [
         {
-          "file": "./crm-card.json",
+          "file": "./generate-meme.json",
           "version": 2
         }
       ]
