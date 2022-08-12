@@ -23,16 +23,11 @@ exports.main = async (context = {}, sendResponse) => {
                         type: 'text',
                         text: `This was originally posted on the subreddit ${randomMeme.subreddit} at: ${randomMeme.postLink}`,
                     },
-                    {
-                        type: 'image',
-                        imageUrl: randomMeme.url,
-                        altText: randomMeme.name,
-                    },
-                    {
-                        type: 'image',
-                        imageUrl: randomMeme.url,
-                        altText: randomMeme.name,
-                    },
+                    // {
+                    //     type: 'image',
+                    //     imageUrl: randomMeme.url,
+                    //     altText: randomMeme.name,
+                    // }
                 ]
             },
             {
