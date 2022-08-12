@@ -1,23 +1,16 @@
 // For external API calls
 const axios = require('axios');
-// For HubSpot API calls (HubSpot node API client)
-const hubspot = require('@hubspot/api-client');
 
 exports.main = async (context = {}, sendResponse) => {
     const {
         propertiesToSend: {firstname},
     } = context;
 
-    // Instantiating HubSpot node API client
-    const hubspotClient = new hubspot.Client({
-        accessToken: context.secrets.PRIVATE_APP_ACCESS_TOKEN,
-    });
-
     try {
         const memes = await axios.get('https://meme-api.herokuapp.com/gimme/1');
         // memes contains a list of 100 memes, get a random one
         const randomMeme = memes.data.memes[0];
-
+        console.log(randomMeme);
         const memeSections = [
             {
                 type: 'text',
