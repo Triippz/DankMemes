@@ -10,6 +10,7 @@ exports.main = async (context = {}, sendResponse) => {
         const {data} = await axios.get('https://meme-api.herokuapp.com/gimme/1');
         // memes contains a list of 100 memes, get a random one
         const randomMeme = data.memes[0];
+        console.log("Testing metrics in QA");
         const memeSections = [
             {
                 type: 'tile',
