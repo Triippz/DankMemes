@@ -1,0 +1,12 @@
+{
+  "components": [
+    {
+      "type": "app",
+      "src": "src/app"
+    },
+    {
+      "type": "serverless",
+      "src": "src/app/app.functions"
+    }
+  ]
+}
