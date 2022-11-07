@@ -1,0 +1,50 @@
+{
+  "name": "DankMemes",
+  "key": "<SOME_UNIQUE_KEY>",
+  "portal": 12345678,
+  "components": {
+    "apps": {
+      // Option 1
+      "app1": {
+        "name": "App1",
+        "src": "src/app" // Can look for an app.json file in this directory
+      },
+      // Option 2
+      "app2": {
+        "name": "App2",
+        "src": "src/app",
+        "description": "",
+        "scopes": [
+          "crm.objects.contacts.read",
+          "crm.objects.contacts.write"
+        ],
+        "public": false,
+        "extensions": {
+          "crm": {
+            "cards": [
+              {
+                "file": "./generate-meme.json",
+                "version": 2
+              }
+            ]
+          }
+        }
+      }
+    },
+    "serverless": [
+      {
+        "src": "src/app/app.functions"
+      },
+      {
+        "runtime": "nodejs12.x",
+        "version": "1.0",
+        "appFunctions": {
+          "generate-meme": {
+            "file": "generate-meme.js",
+            "secrets": []
+          }
+        }
+      }
+    ]
+  }
+}
